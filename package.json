@@ -1,0 +1,38 @@
+{
+  "name": "SkyWay-Screenshare-Library",
+  "description": "Screenshare Library for SkyWay",
+  "version": "1.0.0",
+  "license": "MIT License",
+  "homepage": "https://github.com/nttcom/SkyWay-ScreenShare",
+  "author": {
+    "name": "NTT Communications",
+    "email": "skyway@ntt.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nttcom/skyway-screenshare/blob/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-library": "gulp build-library",
+    "build-chrome": "gulp build-chrome",
+    "pre-build-firefox": "gulp pre-build-firefox",
+    "build-firefox": "gulp build-firefox"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-shell": "^0.3.0",
+    "gulp-typescript-compiler": "^1.0.1",
+    "gulp-tsd": "^0.0.4",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0",
+    "gulp-zip": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-plumber": "^1.0.1",
+    "gulp-header": "^1.2.2"
+  },
+  "main": "gulpfile.js",
+  "dependencies": ""
+}

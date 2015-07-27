@@ -1,0 +1,1 @@
+unsafeWindow.ScreenShareExtentionExists=cloneInto(!0,unsafeWindow);
