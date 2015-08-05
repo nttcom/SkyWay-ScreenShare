@@ -78,7 +78,7 @@ cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-生成されたExtentionをChromenで読み込み動作確認を行います。
+生成されたExtentionをChromeで読み込み動作確認を行います。
 
 1. chrome://extensions/ にアクセス
 2. 「デベロッパーモード」を有効にする
