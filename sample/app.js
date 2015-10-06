@@ -74,7 +74,7 @@ $(document).ready(function () {
                     Height: $('#Height').val(),
                     FrameRate: $('#FrameRate').val()
                 },function (stream){
-                    $('#my-video').prop('src', URL.createObjectURL(stream));
+                    attachMediaStream($('#my-video')[0],stream);
                     if(existingCall != null){
                         var _peerid = existingCall.peer;
                         existingCall.close();
@@ -103,7 +103,7 @@ $(document).ready(function () {
         //カメラ
         $('#start-camera').click(function () {
             getUM(function(stream){
-                $('#my-video').prop('src', URL.createObjectURL(stream));
+                attachMediaStream($('#my-video')[0],stream);
                 if(existingCall != null){
                     var _peerid = existingCall.peer;
                     existingCall.close();
@@ -125,7 +125,7 @@ $(document).ready(function () {
     function step1() {
         // メディアストリームを取得する
         getUM(function(stream){
-            $('#my-video').prop('src', URL.createObjectURL(stream));
+            attachMediaStream($('#my-video')[0],stream);
             localStream = stream;
             step2();
         },function(error){
@@ -148,7 +148,7 @@ $(document).ready(function () {
 
         // 相手からのメディアストリームを待ち受ける
         call.on('stream', function (stream) {
-            $('#their-video').prop('src', URL.createObjectURL(stream));
+            attachMediaStream($('#their-video')[0],stream);
             $('#step1, #step2').hide();
             $('#step3').show();
         });
