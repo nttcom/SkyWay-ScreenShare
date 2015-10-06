@@ -4,7 +4,7 @@ module SkyWay {
 
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    export interface getUserMediaFirefoxOptionsObject {
+    export interface getUserMediaOptionsObject {
         video: {
             mozMediaSource: string;
             mediaSource: string;
@@ -36,6 +36,15 @@ module SkyWay {
             minFrameRate?:number;
         };
         optional: any;
+    }
+
+    export interface getUserMediaIEOptionsObject {
+        video: {
+            optional: {
+                sourceId: string;
+            }
+        };
+        audio: boolean;
     }
 
     export interface gUMParamObject {
@@ -138,8 +147,39 @@ module SkyWay {
                 });
 
                 window.postMessage({type:"getStreamId"},"*");
-            }
+            } else if(AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
+                // would be fine since no methods
+                var _paramIE: getUserMediaIEOptionsObject = {
+                    video: {
+                        optional: [{
+                            sourceId: AdapterJS.WebRTCPlugin.plugin.screensharingKey || 'Screensharing'
+                        }]
+                    },
+                    audio: false
+                };
 
+                // wait for plugin to be ready
+                AdapterJS.WebRTCPlugin.callWhenPluginReady(function() {
+                    // check if screensharing feature is available
+                    if (!!AdapterJS.WebRTCPlugin.plugin.HasScreensharingFeature &&
+                        !!AdapterJS.WebRTCPlugin.plugin.isScreensharingAvailable) {
+                        navigator.getUserMedia(_paramIE,
+                        (stream)=>{
+                            stream.onended = (event)=>{
+                                _this.logger(event);
+                                if(typeof(onEndedEvent) !== "undefined") onEndedEvent();
+                            };
+                            _this.logger(stream);
+                            success(stream);
+                        }, (err)=>{
+                            _this.logger(err);
+                            error(err);
+                        });
+                    } else {
+                        throw new Error('Your WebRTC plugin does not support screensharing');
+                    }
+                });
+            }
         }
 
         public stopScreenShare():boolean{
@@ -148,10 +188,14 @@ module SkyWay {
         }
 
         public isEnabledExtension():boolean{
-            this.logger(window.ScreenShareExtentionExists);
-            if(typeof (window.ScreenShareExtentionExists) === 'boolean'){
+            if(typeof (window.ScreenShareExtentionExists) === 'boolean' ||
+                (AdapterJS && AdapterJS.WebRTCPlugin &&
+                 AdapterJS.WebRTCPlugin.isPluginInstalled))
+            {
+                this.logger('ScreenShare Extension available');
                 return true
-            }else{
+            } else{
+                this.logger('ScreenShare Extension not available');
                 return false
             }
         }
