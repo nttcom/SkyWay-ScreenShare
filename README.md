@@ -72,26 +72,26 @@ Essential modification items are as follows:
 |version|Your extension version number here.|
 |description|Your extension description here.|
 |icons|Your extension icon files name here.<BR>Icon files should be located here <`SkyWay-ScreenShare/chrome-extension/src/`>.<BR>Icon files of SkyWay is included with in this repository.|
-|matches|It will fill the site domain to use this Extention.<BR>Wild card is available in the domain.<BR>Ex：`"matches": ["https://*.skyway.io/*"]`|
+|matches|It will fill the site domain to use this Extension.<BR>Wild card is available in the domain.<BR>Ex：`"matches": ["https://*.skyway.io/*"]`|
 
 
-Enter the SkyWay-ScreenShare directory and run the build script of Chrome Extention:
+Enter the SkyWay-ScreenShare directory and run the build script of Chrome Extension:
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-Test the generated extention file on the Chrome:
+Test the generated extension file on the Chrome:
 
 1. Access to chrome://extensions/
 2. Enable the 'Developer mode'
-3. Click the 'Load unpacked extention...' and specify the following directory
+3. Click the 'Load unpacked extension...' and specify the following directory
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension/
 ```
 
 
-Publish the Extention:
+Publish the Extension:
 If you publish to the Chrome Web Store, please use of the following Zip file.
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension.zip
@@ -231,7 +231,7 @@ stream.stop();
 
 ### isEnabledExtension
 
-- Chrome Extentions or Firefox Add-On me to check the whether they are installed. `<true or false>`
+- Chrome Extensions or Firefox Add-On me to check the whether they are installed. `<true or false>`
 
 ```javascript
 var result = screenshare.isEnabledExtension();
@@ -243,8 +243,8 @@ var result = screenshare.isEnabledExtension();
 
 https://skyway.io/examples/screenshare/
 
-  - [Chrome Extention download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
-  - [Firefox Exntention donwload](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
+  - [Chrome Extension download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
+  - [Firefox Extension download](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
 
