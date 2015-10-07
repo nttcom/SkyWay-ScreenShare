@@ -102,6 +102,37 @@ var SkyWay;
                 });
 
                 window.postMessage({ type: "getStreamId" }, "*");
+            } else if (AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
+                // would be fine since no methods
+                var _paramIE = {
+                    video: {
+                        optional: [{
+                                sourceId: AdapterJS.WebRTCPlugin.plugin.screensharingKey || 'Screensharing'
+                            }]
+                    },
+                    audio: false
+                };
+
+                // wait for plugin to be ready
+                AdapterJS.WebRTCPlugin.callWhenPluginReady(function () {
+                    // check if screensharing feature is available
+                    if (!!AdapterJS.WebRTCPlugin.plugin.HasScreensharingFeature && !!AdapterJS.WebRTCPlugin.plugin.isScreensharingAvailable) {
+                        navigator.getUserMedia(_paramIE, function (stream) {
+                            stream.onended = function (event) {
+                                _this.logger(event);
+                                if (typeof (onEndedEvent) !== "undefined")
+                                    onEndedEvent();
+                            };
+                            _this.logger(stream);
+                            success(stream);
+                        }, function (err) {
+                            _this.logger(err);
+                            error(err);
+                        });
+                    } else {
+                        throw new Error('Your WebRTC plugin does not support screensharing');
+                    }
+                });
             }
         };
 
@@ -111,10 +142,11 @@ var SkyWay;
         };
 
         ScreenShare.prototype.isEnabledExtension = function () {
-            this.logger(window.ScreenShareExtentionExists);
-            if (typeof (window.ScreenShareExtentionExists) === 'boolean') {
+            if (typeof (window.ScreenShareExtentionExists) === 'boolean' || (AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled)) {
+                this.logger('ScreenShare Extension available');
                 return true;
             } else {
+                this.logger('ScreenShare Extension not available');
                 return false;
             }
         };
