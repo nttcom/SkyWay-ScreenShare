@@ -243,7 +243,7 @@ var result = screenshare.isEnabledExtension();
 
 https://skyway.io/examples/screenshare/
 
-  - [Chrome Extention download](https://chrome.google.com/webstore/detail/skyway-screenshare-plugin/adbpenahfghigjmnhebckghlebfnbfem?hl=ja&authuser=2)
+  - [Chrome Extention download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
   - [Firefox Exntention donwload](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
