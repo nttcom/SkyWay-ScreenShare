@@ -64,21 +64,21 @@ Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソー�
 
 |修正項目|コメント|
 |---|---|---|
-|name|Extentionのnameを指定して下さい。|
-|short_name|Extentionのshort_nameを指定して下さい。|
-|version|Extentionのversion番号を指定して下さい。|
-|description|Extentionのdescriptionを指定して下さい。|
-|icons|Extentionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
-|matches|Extention利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
+|name|Extensionのnameを指定して下さい。|
+|short_name|Extensionのshort_nameを指定して下さい。|
+|version|Extensionのversion番号を指定して下さい。|
+|description|Extensionのdescriptionを指定して下さい。|
+|icons|Extensionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
+|matches|Extension利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
 
 
-Extentionをビルドします。
+Extensionをビルドします。
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-生成されたExtentionをChromeで読み込み動作確認を行います。
+生成されたExtensionをChromeで読み込み動作確認を行います。
 
 1. chrome://extensions/ にアクセス
 2. 「デベロッパーモード」を有効にする
@@ -88,7 +88,7 @@ SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension/
 ```
 
 
-Extentionを公開します。
+Extensionを公開します。
 Chrome Web Storeに公開する場合は以下のZipファイルを利用して下さい。
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension.zip
@@ -228,7 +228,7 @@ stream.stop();
 
 ### isEnabledExtension
 
-- Chrome ExtentionsまたはFirefox Add-Onがインストールされているかどうか`<true or false>`を確認する
+- Chrome ExtensionsまたはFirefox Add-Onがインストールされているかどうか`<true or false>`を確認する
 
 ```javascript
 var result = screenshare.isEnabledExtension();
@@ -240,8 +240,8 @@ var result = screenshare.isEnabledExtension();
 
 https://skyway.io/examples/screenshare/
 
-  - [Chrome Extention download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
-  - [Firefox Exntention donwload](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
+  - [Chrome Extension download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
+  - [Firefox Extension download](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
 
