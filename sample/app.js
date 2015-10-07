@@ -7,8 +7,8 @@
 
 $(document).ready(function () {
 
-    //APIキー
-    var APIKEY = '';
+    //APIキー（6165842a-5c0d-11e3-b514-75d3313b9d05はlocalhostのみ利用可能）
+    var APIKEY = '6165842a-5c0d-11e3-b514-75d3313b9d05';
 
     //ユーザーリスト
     var userList = [];

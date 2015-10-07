@@ -236,7 +236,12 @@ var result = screenshare.isEnabledExtension();
 
 ## Sample
 
-SkyWay ScreenShare Sample App(準備中)
+### SkyWay ScreenShare Sample App
+
+https://skyway.io/examples/screenshare/
+
+  - [Chrome Extention download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
+  - [Firefox Exntention donwload](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
 
