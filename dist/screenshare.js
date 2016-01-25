@@ -14,7 +14,7 @@ var SkyWay;
         function ScreenShare(options) {
             if (typeof options === "undefined") { options = null; }
             this._debug = false;
-            if ('debug' in options)
+            if (options !== null && 'debug' in options)
                 this._debug = options.debug;
         }
         ScreenShare.prototype.startScreenShare = function (param, success, error, onEndedEvent) {
@@ -90,7 +90,7 @@ var SkyWay;
                     }, function (stream) {
                         stream.onended = function (event) {
                             _this.logger(event);
-                            if (typeof (onEndedEvent) !== "undefined")
+                            if (typeof (onEndedEvent) !== "undefined" && onEndedEvent !== null)
                                 onEndedEvent();
                         };
                         _this.logger(stream);
