@@ -64,7 +64,7 @@ module SkyWay {
         private _debug: boolean = false;
 
         constructor(options:optionsObject=null){
-            if('debug' in options) this._debug = options.debug;
+            if(options !== null &&'debug' in options) this._debug = options.debug;
         }
 
         public startScreenShare(param:gUMParamObject,success:{(stream:MediaStream)}, error:{(error:Error)}, onEndedEvent = null):void{
@@ -135,7 +135,7 @@ module SkyWay {
                     }, (stream)=>{
                         stream.onended = (event)=>{
                             this.logger(event);
-                            if(typeof(onEndedEvent) !== "undefined") onEndedEvent();
+                            if(typeof(onEndedEvent) !== "undefined" && onEndedEvent !== null) onEndedEvent();
                         };
                         this.logger(stream);
                         success(stream);
