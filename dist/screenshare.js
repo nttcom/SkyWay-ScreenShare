@@ -102,7 +102,7 @@ var SkyWay;
                 });
 
                 window.postMessage({ type: "getStreamId" }, "*");
-            } else if (typeof (AdapterJS) !== 'undefined' && AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
+            } else if (window.AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
                 // would be fine since no methods
                 var _paramIE = {
                     video: {
@@ -142,7 +142,7 @@ var SkyWay;
         };
 
         ScreenShare.prototype.isEnabledExtension = function () {
-            if (typeof (window.ScreenShareExtentionExists) === 'boolean' || (typeof (AdapterJS) !== 'undefined' && AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled)) {
+            if (typeof (window.ScreenShareExtentionExists) === 'boolean' || (window.AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled)) {
                 this.logger('ScreenShare Extension available');
                 return true;
             } else {
