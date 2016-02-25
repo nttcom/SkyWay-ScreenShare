@@ -37,13 +37,12 @@ var SkyWay;
                 if (isFinite(param.FrameRate))
                     _paramFirefox.video.frameRate = { min: param.FrameRate, max: param.FrameRate };
 
-                this.logger(_paramFirefox);
+                this.logger("Parameter of getUserMedia : " + JSON.stringify(_paramFirefox));
 
                 navigator.mozGetUserMedia(_paramFirefox, function (stream) {
-                    _this.logger(stream);
                     success(stream);
                 }, function (err) {
-                    _this.logger(err);
+                    _this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                     error(err);
                 });
             } else if (!!navigator.webkitGetUserMedia) {
@@ -78,25 +77,25 @@ var SkyWay;
                 ;
 
                 window.addEventListener('message', function (event) {
-                    _this.logger(event.data.type);
+                    _this.logger("Received " + '"' + event.data.type + '"' + " message from Extension.");
                     if (event.data.type != 'gotStreamId') {
                         return;
                     }
                     _paramChrome.mandatory.chromeMediaSourceId = event.data.streamid;
-                    _this.logger(_paramChrome);
+                    _this.logger("Parameter of getUserMedia : " + JSON.stringify(_paramChrome));
                     navigator.getUserMedia({
                         audio: false,
                         video: _paramChrome
                     }, function (stream) {
+                        _this.logger("Got a stream for screen share");
                         stream.onended = function (event) {
-                            _this.logger(event);
+                            _this.logger("Stream ended event fired : " + JSON.stringify(event));
                             if (typeof (onEndedEvent) !== "undefined" && onEndedEvent !== null)
                                 onEndedEvent();
                         };
-                        _this.logger(stream);
                         success(stream);
                     }, function (err) {
-                        _this.logger(err);
+                        _this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                         error(err);
                     });
                 });
@@ -118,15 +117,15 @@ var SkyWay;
                     // check if screensharing feature is available
                     if (!!AdapterJS.WebRTCPlugin.plugin.HasScreensharingFeature && !!AdapterJS.WebRTCPlugin.plugin.isScreensharingAvailable) {
                         navigator.getUserMedia(_paramIE, function (stream) {
+                            _this.logger("Got a stream for screen share");
                             stream.onended = function (event) {
-                                _this.logger(event);
+                                _this.logger("Stream ended event fired : " + JSON.stringify(event));
                                 if (typeof (onEndedEvent) !== "undefined")
                                     onEndedEvent();
                             };
-                            _this.logger(stream);
                             success(stream);
                         }, function (err) {
-                            _this.logger(err);
+                            _this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                             error(err);
                         });
                     } else {
@@ -153,7 +152,7 @@ var SkyWay;
 
         ScreenShare.prototype.logger = function (message) {
             if (this._debug) {
-                console.log("ScreenShare: " + message);
+                console.log("SkyWay-ScreenShare: " + message);
             }
         };
         return ScreenShare;
