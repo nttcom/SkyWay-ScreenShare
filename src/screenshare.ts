@@ -147,7 +147,7 @@ module SkyWay {
                 });
 
                 window.postMessage({type:"getStreamId"},"*");
-            } else if(AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
+            } else if(typeof (AdapterJS)  !== 'undefined' && AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
                 // would be fine since no methods
                 var _paramIE: getUserMediaIEOptionsObject = {
                     video: {
@@ -189,8 +189,7 @@ module SkyWay {
 
         public isEnabledExtension():boolean{
             if(typeof (window.ScreenShareExtentionExists) === 'boolean' ||
-                (AdapterJS && AdapterJS.WebRTCPlugin &&
-                 AdapterJS.WebRTCPlugin.isPluginInstalled))
+                (typeof (AdapterJS)  !== 'undefined' && AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled))
             {
                 this.logger('ScreenShare Extension available');
                 return true
