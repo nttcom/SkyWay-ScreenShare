@@ -1,6 +1,6 @@
 /**
  * SkyWay-Screenshare-Library - Screenshare Library for SkyWay
- * @version v1.0.0
+ * @version v1.1.0
  * @author NTT Communications(skyway@ntt.com)
  * @link https://github.com/nttcom/SkyWay-ScreenShare
  * @license MIT License
