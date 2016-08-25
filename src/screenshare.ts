@@ -84,13 +84,12 @@ module SkyWay {
                 if(isFinite(param.Height)) _paramFirefox.video.height = {min: param.Height,max: param.Height};
                 if(isFinite(param.FrameRate)) _paramFirefox.video.frameRate = {min: param.FrameRate,max: param.FrameRate};
 
-                this.logger(_paramFirefox);
+                this.logger("Parameter of getUserMedia : " + JSON.stringify(_paramFirefox));
 
                 navigator.mozGetUserMedia(_paramFirefox, (stream)=>{
-                    this.logger(stream);
                     success(stream);
                 }, (err)=>{
-                    this.logger(err);
+                    this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                     error(err);
                 });
 
@@ -104,8 +103,6 @@ module SkyWay {
                     },
                     optional: [{
                         googTemporalLayeredScreencast: true
-                    },{
-                        googLeakyBucket: true
                     }]
                 };
 
@@ -123,31 +120,32 @@ module SkyWay {
                 };
 
                 window.addEventListener('message',(event:MessageEvent)=>{
-                    this.logger(event.data.type);
+                    this.logger("Received " + '"' + event.data.type + '"' + " message from Extension.");
                     if(event.data.type != 'gotStreamId') {
                         return;
                     }
                     _paramChrome.mandatory.chromeMediaSourceId = event.data.streamid;
-                    this.logger(_paramChrome);
+                    this.logger("Parameter of getUserMedia : " + JSON.stringify(_paramChrome));
                     navigator.getUserMedia({
                         audio: false,
                         video: _paramChrome
                     }, (stream)=>{
-                        stream.onended = (event)=>{
-                            this.logger(event);
+                        this.logger("Got a stream for screen share");
+                        var streamTrack = stream.getVideoTracks();
+                        streamTrack[0].onended = (event)=>{
+                            this.logger("Stream ended event fired : " + JSON.stringify(event));
                             if(typeof(onEndedEvent) !== "undefined" && onEndedEvent !== null) onEndedEvent();
                         };
-                        this.logger(stream);
                         success(stream);
                     }, (err)=>{
-                        this.logger(err);
+                        this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                         error(err);
                     });
 
                 });
 
                 window.postMessage({type:"getStreamId"},"*");
-            } else if(AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
+            } else if(window.AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled) {
                 // would be fine since no methods
                 var _paramIE: getUserMediaIEOptionsObject = {
                     video: {
@@ -165,14 +163,15 @@ module SkyWay {
                         !!AdapterJS.WebRTCPlugin.plugin.isScreensharingAvailable) {
                         navigator.getUserMedia(_paramIE,
                         (stream)=>{
-                            stream.onended = (event)=>{
-                                _this.logger(event);
+                            _this.logger("Got a stream for screen share");
+                            var streamTrack = stream.getVideoTracks();
+                            streamTrack[0].onended = (event)=>{
+                                _this.logger("Stream ended event fired : " + JSON.stringify(event));
                                 if(typeof(onEndedEvent) !== "undefined") onEndedEvent();
                             };
-                            _this.logger(stream);
                             success(stream);
                         }, (err)=>{
-                            _this.logger(err);
+                            _this.logger("Error message of getUserMedia : " + JSON.stringify(err));
                             error(err);
                         });
                     } else {
@@ -189,8 +188,7 @@ module SkyWay {
 
         public isEnabledExtension():boolean{
             if(typeof (window.ScreenShareExtentionExists) === 'boolean' ||
-                (AdapterJS && AdapterJS.WebRTCPlugin &&
-                 AdapterJS.WebRTCPlugin.isPluginInstalled))
+                (window.AdapterJS && AdapterJS.WebRTCPlugin && AdapterJS.WebRTCPlugin.isPluginInstalled))
             {
                 this.logger('ScreenShare Extension available');
                 return true
@@ -202,7 +200,7 @@ module SkyWay {
 
         private logger(message:any):void{
             if(this._debug){
-                console.log("ScreenShare: "+message);
+                console.log("SkyWay-ScreenShare: "+message);
             }
         }
 

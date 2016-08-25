@@ -7,27 +7,27 @@ Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソー�
 
 * CDNを利用する場合
 
-	```html
-	<script src="https://skyway.io/dist/screenshare.js"></script>
-	```
+ ```html
+ <script src="https://skyway.io/dist/screenshare.js"></script>
+ ```
 
 * 自分でビルドする場合
 
-	ライブラリをcloneします。
-	```
-	git clone git@github.com:nttcom/SkyWay-ScreenShare.git
-	```
+ ライブラリをcloneします。
+ ```
+ git clone git@github.com:nttcom/SkyWay-ScreenShare.git
+ ```
 
-	ライブラリをビルドします。
-	```
-	cd SkyWay-ScreenShare && npm install && npm run build-library
-	```
+ ライブラリをビルドします。
+ ```
+ cd SkyWay-ScreenShare && npm install && npm run build-library
+ ```
 
-	生成されたライブラリを利用します。
-	```
-	SkyWay-ScreenShare/dist/screenshare.js
-	SkyWay-ScreenShare/dist/screenshare.min.js
-	```
+ 生成されたライブラリを利用します。
+ ```
+ SkyWay-ScreenShare/dist/screenshare.js
+ SkyWay-ScreenShare/dist/screenshare.min.js
+ ```
 
 ### 2. Chrome Extension
 
@@ -64,21 +64,21 @@ Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソー�
 
 |修正項目|コメント|
 |---|---|---|
-|name|Extensionのnameを指定して下さい。|
-|short_name|Extensionのshort_nameを指定して下さい。|
-|version|Extensionのversion番号を指定して下さい。|
-|description|Extensionのdescriptionを指定して下さい。|
-|icons|Extensionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
-|matches|Extension利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
+|name|Extentionのnameを指定して下さい。|
+|short_name|Extentionのshort_nameを指定して下さい。|
+|version|Extentionのversion番号を指定して下さい。|
+|description|Extentionのdescriptionを指定して下さい。|
+|icons|Extentionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
+|matches|Extention利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
 
 
-Extensionをビルドします。
+Extentionをビルドします。
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-生成されたExtensionをChromeで読み込み動作確認を行います。
+生成されたExtentionをChromenで読み込み動作確認を行います。
 
 1. chrome://extensions/ にアクセス
 2. 「デベロッパーモード」を有効にする
@@ -88,7 +88,7 @@ SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension/
 ```
 
 
-Extensionを公開します。
+Extentionを公開します。
 Chrome Web Storeに公開する場合は以下のZipファイルを利用して下さい。
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension.zip
@@ -202,9 +202,9 @@ var screenshare = new SkyWay.ScreenShare([options]);
 
 ```javascript
 screenshare.startScreenShare({
-	"Width": <number>,
-	"Height": <number>,
-	"FrameRate": <number>
+ "Width": <number>,
+ "Height": <number>,
+ "FrameRate": <number>
 },function(stream){
  // success callback
  // 成功するとstreamオブジェクトを取得できます
@@ -228,20 +228,30 @@ stream.stop();
 
 ### isEnabledExtension
 
-- Chrome ExtensionsまたはFirefox Add-Onがインストールされているかどうか`<true or false>`を確認する
+- Chrome ExtentionsまたはFirefox Add-Onがインストールされているかどうか`<true or false>`を確認する
 
 ```javascript
 var result = screenshare.isEnabledExtension();
 ```
 
+### Event
+
+#### type=ScreenShareInjected
+
+- ChromeでExtension scriptのloadが完了した時に発火するイベント。[Inline Installation](https://developer.chrome.com/webstore/inline_installation) の際、このイベントをハンドルすることで、自動でScreenShare 機能を実行することができる。なお、Inline Installationを使う場合は、chrome-extension/src/background.js の config.hostname を利用されるWebサイトの hostname に変更してください。
+
+```javascript
+window.addEventListner('message', function(ev) {
+  if(ev.data.type === "ScreenShareInjected") {
+    console.log('screen share extension is injected, get ready to start');
+    startScreenShare();
+  }
+}, false);
+```
+
 ## Sample
 
-### SkyWay ScreenShare Sample App
-
-https://skyway.io/examples/screenshare/
-
-  - [Chrome Extension download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
-  - [Firefox Extension download](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
+SkyWay ScreenShare Sample App(準備中)
 
 ## Contributing
 
