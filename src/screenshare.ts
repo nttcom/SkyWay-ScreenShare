@@ -103,8 +103,6 @@ module SkyWay {
                     },
                     optional: [{
                         googTemporalLayeredScreencast: true
-                    },{
-                        googLeakyBucket: true
                     }]
                 };
 
@@ -133,7 +131,8 @@ module SkyWay {
                         video: _paramChrome
                     }, (stream)=>{
                         this.logger("Got a stream for screen share");
-                        stream.onended = (event)=>{
+                        var streamTrack = stream.getVideoTracks();
+                        streamTrack[0].onended = (event)=>{
                             this.logger("Stream ended event fired : " + JSON.stringify(event));
                             if(typeof(onEndedEvent) !== "undefined" && onEndedEvent !== null) onEndedEvent();
                         };
@@ -165,7 +164,8 @@ module SkyWay {
                         navigator.getUserMedia(_paramIE,
                         (stream)=>{
                             _this.logger("Got a stream for screen share");
-                            stream.onended = (event)=>{
+                            var streamTrack = stream.getVideoTracks();
+                            streamTrack[0].onended = (event)=>{
                                 _this.logger("Stream ended event fired : " + JSON.stringify(event));
                                 if(typeof(onEndedEvent) !== "undefined") onEndedEvent();
                             };
