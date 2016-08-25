@@ -52,11 +52,8 @@ var SkyWay;
                         chromeMediaSource: 'desktop',
                         chromeMediaSourceId: ''
                     },
-                    optional: [
-                        {
+                    optional: [{
                             googTemporalLayeredScreencast: true
-                        }, {
-                            googLeakyBucket: true
                         }]
                 };
 
@@ -88,7 +85,8 @@ var SkyWay;
                         video: _paramChrome
                     }, function (stream) {
                         _this.logger("Got a stream for screen share");
-                        stream.onended = function (event) {
+                        var streamTrack = stream.getVideoTracks();
+                        streamTrack[0].onended = function (event) {
                             _this.logger("Stream ended event fired : " + JSON.stringify(event));
                             if (typeof (onEndedEvent) !== "undefined" && onEndedEvent !== null)
                                 onEndedEvent();
@@ -118,7 +116,8 @@ var SkyWay;
                     if (!!AdapterJS.WebRTCPlugin.plugin.HasScreensharingFeature && !!AdapterJS.WebRTCPlugin.plugin.isScreensharingAvailable) {
                         navigator.getUserMedia(_paramIE, function (stream) {
                             _this.logger("Got a stream for screen share");
-                            stream.onended = function (event) {
+                            var streamTrack = stream.getVideoTracks();
+                            streamTrack[0].onended = function (event) {
                                 _this.logger("Stream ended event fired : " + JSON.stringify(event));
                                 if (typeof (onEndedEvent) !== "undefined")
                                     onEndedEvent();
