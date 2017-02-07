@@ -1,5 +1,5 @@
 WebRTCのWebアプリケーションでスクリーンシェア機能を簡単に実装できるライブラリです。
-Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソースコードも含まれています。
+Chrome向けのextension用ソースコードとFirefox向けのadd-on用ソースコードも含まれています。
 
 ## Installation
 
@@ -7,27 +7,27 @@ Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソー�
 
 * CDNを利用する場合
 
- ```html
- <script src="https://skyway.io/dist/screenshare.js"></script>
- ```
+	```html
+	<script src="https://skyway.io/dist/screenshare.js"></script>
+	```
 
 * 自分でビルドする場合
 
- ライブラリをcloneします。
- ```
- git clone git@github.com:nttcom/SkyWay-ScreenShare.git
- ```
+	ライブラリをcloneします。
+	```
+	git clone git@github.com:nttcom/SkyWay-ScreenShare.git
+	```
 
- ライブラリをビルドします。
- ```
- cd SkyWay-ScreenShare && npm install && npm run build-library
- ```
+	ライブラリをビルドします。
+	```
+	cd SkyWay-ScreenShare && npm install && npm run build-library
+	```
 
- 生成されたライブラリを利用します。
- ```
- SkyWay-ScreenShare/dist/screenshare.js
- SkyWay-ScreenShare/dist/screenshare.min.js
- ```
+	生成されたライブラリを利用します。
+	```
+	SkyWay-ScreenShare/dist/screenshare.js
+	SkyWay-ScreenShare/dist/screenshare.min.js
+	```
 
 ### 2. Chrome Extension
 
@@ -64,21 +64,21 @@ Chrome向けのExtension用ソースコードとFirefox向けのAdd-On用ソー�
 
 |修正項目|コメント|
 |---|---|---|
-|name|Extentionのnameを指定して下さい。|
-|short_name|Extentionのshort_nameを指定して下さい。|
-|version|Extentionのversion番号を指定して下さい。|
-|description|Extentionのdescriptionを指定して下さい。|
-|icons|Extentionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
-|matches|Extention利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
+|name|extensionのnameを指定して下さい。|
+|short_name|extensionのshort_nameを指定して下さい。|
+|version|extensionのversion番号を指定して下さい。|
+|description|extensionのdescriptionを指定して下さい。|
+|icons|extensionのiconファイル名（３種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/chrome-extension/src/` に配置して下さい。<BR>リポジトリにはSkyWayのiconファイルが同梱されています。|
+|matches|extensionを利用するサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`"matches": ["https://*.skyway.io/*"]`|
 
 
-Extentionをビルドします。
+SkyWay-ScreenShareディレクトリに入り、Chrome extension用のビルドスクリプトを実行します。
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-生成されたExtentionをChromenで読み込み動作確認を行います。
+Chromeでextensionのテストを行います。
 
 1. chrome://extensions/ にアクセス
 2. 「デベロッパーモード」を有効にする
@@ -88,13 +88,13 @@ SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension/
 ```
 
 
-Extentionを公開します。
+extensionを公開します。
 Chrome Web Storeに公開する場合は以下のZipファイルを利用して下さい。
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension.zip
 ```
 
-### 3. Firefox Add-On
+### 3. Firefox add-on
 
 メインプログラム `SkyWay-ScreenShare/firefox-addon/src/lib/main.js` を修正します。
 ```javascript
@@ -137,14 +137,14 @@ var enable_screensharing_pref = 'media.getusermedia.screensharing.enabled';
 
 |修正項目|コメント|
 |---|---|---|
-|name|Add−Onのnameを指定して下さい。|
-|license|Add−Onのlicenseを指定して下さい。|
-|title|Add−Onのtitleを指定して下さい。|
-|description|Add−Onのdescriptionを指定して下さい。|
-|author|Add−Onのauthorを指定して下さい。|
-|version|Add−Onのversion番号を指定して下さい。|
-|homepage|Add−Onのhomepage urlを指定して下さい。|
-|icon,icon64|Add−Onのiconファイル名（２種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/firefox-addon/src/` に配置して下さい。|
+|name|add−onのnameを指定して下さい。|
+|license|add−onのlicenseを指定して下さい。|
+|title|add−onのtitleを指定して下さい。|
+|description|add−onのdescriptionを指定して下さい。|
+|author|add−onのauthorを指定して下さい。|
+|version|add−onのversion番号を指定して下さい。|
+|homepage|add−onのhomepage urlを指定して下さい。|
+|icon,icon64|add−onのiconファイル名（２種類）を指定して下さい。<BR>iconファイルは `SkyWay-ScreenShare/firefox-addon/src/` に配置して下さい。|
 
 
 cfxコマンドラインツールをインストールします。
@@ -153,7 +153,7 @@ cfxコマンドラインツールをインストールします。
 https://dev.mozilla.jp/addon-sdk-docs/dev-guide/tutorials/installation.html
 
 
-Add-Onを *プレビルド* します。
+add-onを *プレビルド* します。
 ```
 cd SkyWay-ScreenShare && npm install && npm run pre-build-firefox
 ```
@@ -169,19 +169,19 @@ package.json modified: please re-run 'cfx xpi'
 
 ```
 
-Add-Onを *ビルド* します。
+add-onを *ビルド* します。
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-firefox
 ```
 
-生成されたAdd−OnをFirefoxで読み込み動作確認を行います。
+生成されたadd−onをFirefoxで読み込み動作確認を行います。
 
 1. about:addons にアクセス
-2. 画面にビルドしたAdd-Onファイル `SkyWay-ScreenShare/firefox-addon/screenshare_firefox_addon.xpi` をドラッグ・アンド・ドロップ
+2. 画面にビルドしたadd-onファイル `SkyWay-ScreenShare/firefox-addon/screenshare_firefox_addon.xpi` をドラッグ・アンド・ドロップ
 
 
-Add−Onをに公開します。
-サービスサイト等で以下のAdd-Onファイルをダウンロード可能な状態にして下さい。
+add−onをに公開します。
+サービスサイト等で以下のadd-onファイルをダウンロード可能な状態にして下さい。
 ```
 SkyWay-ScreenShare/firefox-addon/screenshare_firefox_addon.xpi
 ```
@@ -202,9 +202,9 @@ var screenshare = new SkyWay.ScreenShare([options]);
 
 ```javascript
 screenshare.startScreenShare({
- "Width": <number>,
- "Height": <number>,
- "FrameRate": <number>
+	"Width": <number>,
+	"Height": <number>,
+	"FrameRate": <number>
 },function(stream){
  // success callback
  // 成功するとstreamオブジェクトを取得できます
@@ -228,7 +228,7 @@ stream.stop();
 
 ### isEnabledExtension
 
-- Chrome ExtentionsまたはFirefox Add-Onがインストールされているかどうか`<true or false>`を確認する
+- Chrome extensionsまたはFirefox add-onがインストールされているかを確認する`<true or false>`
 
 ```javascript
 var result = screenshare.isEnabledExtension();
@@ -238,7 +238,7 @@ var result = screenshare.isEnabledExtension();
 
 #### type=ScreenShareInjected
 
-- ChromeでExtension scriptのloadが完了した時に発火するイベント。[Inline Installation](https://developer.chrome.com/webstore/inline_installation) の際、このイベントをハンドルすることで、自動でScreenShare 機能を実行することができる。なお、Inline Installationを使う場合は、chrome-extension/src/background.js の config.hostname を利用されるWebサイトの hostname に変更してください。
+- Chromeでextension scriptのloadが完了した時に発火するイベント。[Inline Installation](https://developer.chrome.com/webstore/inline_installation) の際、このイベントをハンドルすることで、自動でScreenShare 機能を実行することができる。なお、Inline Installationを使う場合は、chrome-extension/src/background.js の config.hostname を利用されるWebサイトの hostname に変更してください。
 
 ```javascript
 window.addEventListner('message', function(ev) {
@@ -251,11 +251,16 @@ window.addEventListner('message', function(ev) {
 
 ## Sample
 
-SkyWay ScreenShare Sample App(準備中)
+### SkyWay ScreenShare Sample App
+
+https://skyway.io/examples/screenshare/
+
+  - [Install the Chrome extension](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
+  - [Install the Firefox add-on](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/SkyWay-ScreenShare/fork )
+1. [Fork it](https://github.com/nttcom/SkyWay-ScreenShare/fork)
 1. Create your feature branch (git checkout -b my-new-feature)
 1. Commit your changes (git commit -am 'Add some feature')
 1. Push to the branch (git push origin my-new-feature)
