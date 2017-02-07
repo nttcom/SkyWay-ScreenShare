@@ -1,7 +1,7 @@
 # SkyWay ScreenShare Library
 
 This is a library for easy implementation of screen sharing function in the WebRTC of Web applications.
-This repository includes the source code of Chrome Extension and Firefox Add-On.
+This repository includes the source code of Chrome extension and Firefox add-on.
 
 ## Installation
 
@@ -32,7 +32,7 @@ This repository includes the source code of Chrome Extension and Firefox Add-On.
 	SkyWay-ScreenShare/dist/screenshare.min.js
 	```
 
-### 2. Chrome Extension
+### 2. Chrome extension
 
 Modify the manifest.json <`SkyWay-ScreenShare/chrome-extension/src/manifest.json`>:
 ```json
@@ -72,16 +72,16 @@ Essential modification items are as follows:
 |version|Your extension version number here.|
 |description|Your extension description here.|
 |icons|Your extension icon files name here.<BR>Icon files should be located here <`SkyWay-ScreenShare/chrome-extension/src/`>.<BR>Icon files of SkyWay is included with in this repository.|
-|matches|It will fill the site domain to use this Extension.<BR>Wild card is available in the domain.<BR>Ex：`"matches": ["https://*.skyway.io/*"]`|
+|matches|The site urls that will use this extension. <BR>Wildcards are accepted.<BR>Ex：`"matches": ["https://*.skyway.io/*"]`|
 
 
-Enter the SkyWay-ScreenShare directory and run the build script of Chrome Extension:
+Enter the SkyWay-ScreenShare directory and run the build script for the Chrome extension:
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-chrome
 ```
 
 
-Test the generated extension file on the Chrome:
+Test the extension on Chrome:
 
 1. Access to chrome://extensions/
 2. Enable the 'Developer mode'
@@ -91,13 +91,13 @@ SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension/
 ```
 
 
-Publish the Extension:
+Publish the extension:
 If you publish to the Chrome Web Store, please use of the following Zip file.
 ```
 SkyWay-ScreenShare/chrome-extension/screenshare_chrome_extension.zip
 ```
 
-### 3. Firefox Add-On
+### 3. Firefox add-on
 
 Modify the main.js <`SkyWay-ScreenShare/firefox-addon/src/lib/main.js`>
 ```javascript
@@ -140,14 +140,14 @@ Essential modification items are as follows:
 
 |Item|Comment|
 |---|---|---|
-|name|Your Add-On name here.|
-|license|Your Add-On license here.|
-|title|Your Add-On title here.|
-|description|Your Add-On description here.|
-|author|Your Add-On author here.|
-|version|Your Add-On version number here.|
-|homepage|Your Add-On homepage url here.|
-|icon,icon64|Your Add-On icon files name here.<BR>Icon files should be located here <`SkyWay-ScreenShare/firefox-addon/src/`>.|
+|name|Your add-on name here.|
+|license|Your add-on license here.|
+|title|Your add-on title here.|
+|description|Your add-on description here.|
+|author|Your add-on author here.|
+|version|Your add-on version number here.|
+|homepage|Your add-on homepage url here.|
+|icon,icon64|Your add-on icon files name here.<BR>Icon files should be located here <`SkyWay-ScreenShare/firefox-addon/src/`>.|
 
 
 Installing the cfx command-line tool:
@@ -156,7 +156,7 @@ Foe more, see this web site:
 https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation
 
 
-Enter the SkyWay-ScreenShare directory and run the pre build script of Add-On:
+Enter the SkyWay-ScreenShare directory and run the pre build script of add-on:
 ```
 cd SkyWay-ScreenShare && npm install && npm run pre-build-firefox
 ```
@@ -172,19 +172,19 @@ package.json modified: please re-run 'cfx xpi'
 
 ```
 
-Enter the SkyWay-ScreenShare directory and run the build script of Add-On:
+Enter the SkyWay-ScreenShare directory and run the build script of add-on:
 ```
 cd SkyWay-ScreenShare && npm install && npm run build-firefox
 ```
 
-Test the generated Add-On file on the Firefox:
+Test the generated add-on file on the Firefox:
 
 1. Access to about:addons
-2. Drag-and-drop the Add-On file `SkyWay-ScreenShare / firefox-addon / screenshare_firefox_addon.xpi` that are generated on the browser
+2. Drag-and-drop the add-on file `SkyWay-ScreenShare / firefox-addon / screenshare_firefox_addon.xpi` that are generated on the browser
 
 
 Publish the Addo-On:
-Please the following Add-On file to download ready in the service site.
+Please the following add-on file to download ready in the service site.
 ```
 SkyWay-ScreenShare/firefox-addon/screenshare_firefox_addon.xpi
 ```
@@ -231,7 +231,7 @@ stream.stop();
 
 ### isEnabledExtension
 
-- Chrome Extensions or Firefox Add-On me to check the whether they are installed. `<true or false>`
+- Check whether the extension is installed or not. `<true or false>`
 
 ```javascript
 var result = screenshare.isEnabledExtension();
@@ -258,8 +258,8 @@ window.addEventListner('message', function(ev) {
 
 https://skyway.io/examples/screenshare/
 
-  - [Chrome Extension download](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
-  - [Firefox Extension download](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
+  - [Install the Chrome extension](https://chrome.google.com/webstore/detail/skyway-screenshare-sample/lhekboeoffbecdmcgmgeomcpgehiogfj?hl=ja&gl=JP&authuser=2)
+  - [Install the Firefox add-on](https://skyway.io/examples/screenshare/screenshare_firefox_addon.xpi)
 
 ## Contributing
 
