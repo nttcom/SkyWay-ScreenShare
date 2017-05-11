@@ -63,7 +63,7 @@ Chrome向けのextension用ソースコードとFirefox向けのadd-on用ソー�
 必須の修正箇所は以下の通りです。
 
 |修正項目|コメント|
-|---|---|---|
+|---|---|
 |name|extensionのnameを指定して下さい。|
 |short_name|extensionのshort_nameを指定して下さい。|
 |version|extensionのversion番号を指定して下さい。|
@@ -115,7 +115,7 @@ var enable_screensharing_pref = 'media.getusermedia.screensharing.enabled';
 必須の修正箇所は以下の通りです。
 
 |修正項目|コメント|
-|---|---|---|
+|---|---|
 |domains_to_add|ScreenShare機能を有効にするサイトのドメインを指定して下さい。<BR>ドメイン指定には `*`（ワイルドカード）が利用可能です。<BR>例：`var domains_to_add = ['*.skyway.io']`|
 
 
@@ -136,7 +136,7 @@ var enable_screensharing_pref = 'media.getusermedia.screensharing.enabled';
 必須の修正箇所は以下の通りです。
 
 |修正項目|コメント|
-|---|---|---|
+|---|---|
 |name|add−onのnameを指定して下さい。|
 |license|add−onのlicenseを指定して下さい。|
 |title|add−onのtitleを指定して下さい。|
