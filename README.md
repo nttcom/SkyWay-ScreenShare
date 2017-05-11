@@ -66,7 +66,7 @@ Modify the manifest.json <`SkyWay-ScreenShare/chrome-extension/src/manifest.json
 Essential modification items are as follows:
 
 |Item|Comment|
-|---|---|---|
+|---|---|
 |name|Your extension name here.|
 |short_name|Your extension short_name here.|
 |version|Your extension version number here.|
@@ -118,7 +118,7 @@ var enable_screensharing_pref = 'media.getusermedia.screensharing.enabled';
 Essential modification items are as follows:
 
 |Item|Comment|
-|---|---|---|
+|---|---|
 |domains_to_add|Must be specified the domain of the site to enable the ScreenShare function.<BR>Wild card is available in the domain.<BR>Ex：`var domains_to_add = ['*.skyway.io']`|
 
 
@@ -139,7 +139,7 @@ Modify the package.json `SkyWay-ScreenShare/firefox-addon/src/package.json` を�
 Essential modification items are as follows:
 
 |Item|Comment|
-|---|---|---|
+|---|---|
 |name|Your add-on name here.|
 |license|Your add-on license here.|
 |title|Your add-on title here.|
