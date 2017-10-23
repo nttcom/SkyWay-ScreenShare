@@ -1,3 +1,13 @@
+[English](README.md) | 日本語
+
+# Deprecated!
+
+このレポジトリは、2018年3月に提供を終了する旧SkyWayのScreenShareライブラリです。[新しいSkyWay](https://webrtc.ecl.ntt.com/?origin=skyway)への移行をお願いします。
+
+すでに新しいSkyWayをご利用の方は、[新しいScreenShareライブラリ](https://github.com/skyway/skyway-screenshare)をご覧ください。
+
+# SkyWay ScreenShare Library
+
 WebRTCのWebアプリケーションでスクリーンシェア機能を簡単に実装できるライブラリです。
 Chrome向けのextension用ソースコードとFirefox向けのadd-on用ソースコードも含まれています。
 
