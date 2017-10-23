@@ -1,3 +1,11 @@
+English | [日本語](README_ja.md)
+
+# Deprecated!
+
+We have released a new WebRTC platform, [ECLWebRTC](https://webrtc.ecl.ntt.com/en/?origin=skyway), to take the place of SkyWay. We will be shutting down the SkyWay servers in March 2018. Customers who are currently using SkyWay are required to migrate to ECLWebRTC by then or their services will stop working.
+
+If you are looking for the repository of ECLWebRTC, please see the [new ScreenShare Library](https://github.com/skyway/skyway-screenshare).
+
 # SkyWay ScreenShare Library
 
 This is a library for easy implementation of screen sharing function in the WebRTC of Web applications.
